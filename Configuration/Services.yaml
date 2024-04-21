@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Mblunck\LocallangGenerator\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+  Symfony\Component\Translation\Writer\TranslationWriter:
+    public: true
+  Symfony\Component\Translation\Reader\TranslationReader:
+    public: true
+  Mblunck\LocallangGenerator\Command\TranslationUpdateCommand:
+    arguments:
+      $writer: '@Symfony\Component\Translation\Writer\TranslationWriter'
+      $reader: '@Symfony\Component\Translation\Reader\TranslationReader'
+      $extractor: '@Mblunck\LocallangGenerator\Extractor\ChainExtractor'
+    tags:
+      -
+        name: console.command
+        command: 'locallang:translation:update'
+        description: 'Localize fluid templates'
+        schedulable: true

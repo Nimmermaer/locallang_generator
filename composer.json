@@ -1,0 +1,24 @@
+{
+    "name": "mblunck/locallang-generator",
+    "description": "A TYPO3 extension for translating other extensions' f:translate tags into locallang files.",
+    "type": "typo3-cms-extension",
+    "version": "1.0",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "require": {
+        "typo3/cms-core": "^12.0",
+        "symfony/translation": "^7.0",
+        "symfony/http-kernel": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mblunck\\LocallangGenerator\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "locallang_generator"
+        }
+    }
+}
